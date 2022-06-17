@@ -17,21 +17,20 @@ pipeline{
                 }
             }
         }
-        stage("B"){
-            steps{
-                echo "========executing B========"
-            }
-            post{
-                always{
-                    echo "========always========"
+        stage("B - Parallel"){
+            parallel{
+                stage("B1"){
+                    steps{
+                        echo "========executing B1========"
+                    }
                 }
-                success{
-                    echo "========B executed successfully========"
-                }
-                failure{
-                    echo "========B execution failed========"
+                stage("B2"){
+                    steps{
+                        echo "========executing B2========"
+                    }
                 }
             }
+
         }
     }
     post{
