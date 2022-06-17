@@ -4,6 +4,7 @@ pipeline{
         stage("A"){
             steps{
                 echo "========executing A========"
+                sh 'sleep 5'
             }
             post{
                 always{
@@ -22,15 +23,22 @@ pipeline{
                 stage("B1"){
                     steps{
                         echo "========executing B1========"
+                        sh 'sleep 5'
                     }
                 }
                 stage("B2"){
                     steps{
                         echo "========executing B2========"
+                        sh 'sleep 5'
                     }
                 }
             }
-
+        }
+        stage("C"){
+            steps{
+                echo "========executing C========"
+                sh 'sleep 5'
+            }
         }
     }
     post{
