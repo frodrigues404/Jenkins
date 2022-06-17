@@ -1,11 +1,32 @@
-node {
-    stage('step1'){
-        echo 'hello 1'
+pipeline{
+    agent any
+    stages{
+        stage("A"){
+            steps{
+                echo "========executing A========"
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
     }
-    stage('step2'){
-        echo 'hello 2'
-    }
-    stage('step3'){
-        echo 'hello 3'
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
     }
 }
